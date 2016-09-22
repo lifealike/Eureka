@@ -478,7 +478,9 @@ open class FormViewController : UIViewController, FormViewControllerProtocol {
         navigationAccessoryView.tintColor = self.view.tintColor
 
         let selectedIndexPaths = tableView?.indexPathsForSelectedRows ?? []
-        tableView?.reloadRows(at: selectedIndexPaths, with: .none)
+        if selectedIndexPaths.count > 0 { // FIX
+            tableView?.reloadRows(at: selectedIndexPaths, with: .none)
+        }
         selectedIndexPaths.forEach {
             tableView?.selectRow(at: $0, animated: false, scrollPosition: .none)
         }
